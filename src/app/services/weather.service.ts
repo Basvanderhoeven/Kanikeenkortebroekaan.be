@@ -11,7 +11,7 @@ export class WcService{
     }
 
     getLijst() : Observable<RootObject>{
-        return this._http.get<RootObject>("http://samples.openweathermap.org/data/2.5/weather?q=Antwerp&appid=b6907d289e10d714a6e88b30761fae22" );
+        return this._http.get<RootObject>("http://api.openweathermap.org/data/2.5/weather?q=Antwerp&appid=cc163a8649a7de99f8fc8bd72ec71ef4" );
     }
 }
 
