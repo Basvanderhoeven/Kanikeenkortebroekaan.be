@@ -5,13 +5,28 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 
-export class WcService{
+export class WeatherService{
     constructor(private _http : HttpClient){
 
     }
 
-    getLijst() : Observable<RootObject>{
-        return this._http.get<RootObject>("http://api.openweathermap.org/data/2.5/weather?q=Antwerp&appid=cc163a8649a7de99f8fc8bd72ec71ef4" );
+    getLijst(
+        city? : string, 
+        lat? : number, 
+        long? : number) : Observable<IWeathers>{
+            var filter = "http://api.openweathermap.org/data/2.5/weather?appid=cc163a8649a7de99f8fc8bd72ec71ef4&units=metric&lang=nl";
+            if(city){
+                filter += "&q="+city;
+            } else{
+                filter += "&q=Antwerp";
+            }
+            if(lat){
+                filter += "&lat="+lat;
+            }
+            if(long){
+                filter += "&long="+long;
+            }
+        return this._http.get<IWeathers>(filter);
     }
 }
 
@@ -53,7 +68,7 @@ export interface Sys {
     sunset: number;
 }
 
-export interface RootObject {
+export interface IWeathers {
     coord: Coord;
     weather: Weather[];
     base: string;

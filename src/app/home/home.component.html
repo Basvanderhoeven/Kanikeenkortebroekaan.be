@@ -1,3 +1,54 @@
-<p>
-  home works!
-</p>
+<br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div *ngIf="list">
+                    <div *ngIf="kortebroek">
+                            <ul class="kortebroek">
+                                <li>Omschrijving</li>
+                                <li>{{list[0].description}}</li>
+                            </ul>
+                    </div>
+                    <div *ngIf="!kortebroek">
+                            <ul class="langebroek">
+                                <li>{{list[0].description}}</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                
+                <div *ngIf="kortebroek">
+                    <h1 *ngIf="date" class="kortebroek">
+                        Weersvoorspelling {{list[0].naam}} <br>
+                        {{date | date:'dd-MM'}}
+                    </h1>
+                    <img src="assets\ja.png" class="kortebroek">
+                </div>
+                <div *ngIf="!kortebroek">
+                    <h1 *ngIf="date" class="langebroek">
+                        Weersvoorspelling {{list[0].naam}} <br>
+                        {{date | date:'dd-MM'}}
+                    </h1>
+                    <img src="assets\nee.png" class="langebroek">
+                </div>
+                
+            </div>
+            <div class="col-sm-3">
+              <div *ngIf="list">
+                    <div *ngIf="kortebroek">
+                            <ul class="kortebroek">
+                                <li>Temperatuur</li>
+                                <li>{{list[0].temp}}</li>
+                            </ul>
+                    </div>
+                    <div *ngIf="!kortebroek">
+                            <ul class="langebroek">
+                                <li>Temperatuur</li>
+                                <li>{{list[0].temp}}°C</li>
+                            </ul>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
